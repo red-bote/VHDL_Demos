@@ -33,9 +33,10 @@ Vivado ML Edition - 2022.2 Installation
 
 * Install Xilinx cable drivers (requires root, updates udev rules _/etc/udev/rules.d/52-xilinx_ etc. )
 
+```
     cd /Tools/Vivado/2020.2/data/xicom/cable_drivers/lin64/install_script/install_drivers/
     sudo ./install_drivers
-
+```
 
 # Test cable driver and serial port setup 
 
@@ -53,9 +54,10 @@ My preferred terminal communication program is _picocom_:
 
 
 Install Vivado Board Files for Digilent FPGA Boards from [their GitHub repo](https://github.com/Digilent/vivado-boards.git)
+```
     git clone https://github.com/Digilent/vivado-boards.git
     cp -r ~/vivado-boards/new/board_files/basys3/  /Tools/Vivado/2020.2/data/boards/board_files/
-
+```
 
 [Next](docs/intro/Readme.md)
 
