@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="vga_top_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="vga_top_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="715172fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="154"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="9" />
+   <wvobject type="logic" fp_name="/vga_top_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vga_top_tb/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/disp_ena">
+      <obj_property name="ElementShortName">disp_ena</obj_property>
+      <obj_property name="ObjectShortName">disp_ena</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/pixel_clk">
+      <obj_property name="ElementShortName">pixel_clk</obj_property>
+      <obj_property name="ObjectShortName">pixel_clk</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/row">
+      <obj_property name="ElementShortName">row</obj_property>
+      <obj_property name="ObjectShortName">row</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/column">
+      <obj_property name="ElementShortName">column</obj_property>
+      <obj_property name="ObjectShortName">column</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/pix_address">
+      <obj_property name="ElementShortName">pix_address[5:0]</obj_property>
+      <obj_property name="ObjectShortName">pix_address[5:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/pix_data">
+      <obj_property name="ElementShortName">pix_data[31:0]</obj_property>
+      <obj_property name="ObjectShortName">pix_data[31:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/vga_top_tb/u_DUT/u_crtc/u_image_gen/column_r">
+      <obj_property name="ElementShortName">column_r[9:0]</obj_property>
+      <obj_property name="ObjectShortName">column_r[9:0]</obj_property>
+   </wvobject>
+</wave_config>
