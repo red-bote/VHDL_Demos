@@ -21,3 +21,41 @@ The Basys 3 is a demo board for the Xilinx [Artix-7 FPGA](https://www.xilinx.com
 <img align="center" width="666" height="507" src="docs/images/ic5kHM.png">
 
 Vivado ML Edition - 2022.2 Installation
+
+
+# System setup and tool installation
+
+* The Unified Installer will go directly to _Select Product_. The web install client requires login to Xilinx account. 
+
+* Web Install client options to _Download Image Install Separately_ or _Download and Install Now_ 
+
+* The web installer does a good job of resuming broken downloads, but could be an all-niter depending on your Internet!
+
+* Install Xilinx cable drivers (requires root, updates udev rules _/etc/udev/rules.d/52-xilinx_ etc. )
+
+    cd /Tools/Vivado/2020.2/data/xicom/cable_drivers/lin64/install_script/install_drivers/
+    sudo ./install_drivers
+
+
+# Test cable driver and serial port setup 
+
+Additional recommeneded packages for new Linux system install:
+
+`sudo apt-get install net-tools git meld geany picocom geany-plugin-vc openssh-server pinta dos2unix pico`
+
+Be sure your user account is added to dialout group in order to have permissions for the serial port device:
+
+`sudo usermod myuser -G dialout  -a`
+
+My preferred terminal communication program is _picocom_:
+
+`picocom -b 9600 /dev/ttyUSB1`
+
+
+Install Vivado Board Files for Digilent FPGA Boards from [their GitHub repo](https://github.com/Digilent/vivado-boards.git)
+    git clone https://github.com/Digilent/vivado-boards.git
+    cp -r ~/vivado-boards/new/board_files/basys3/  /Tools/Vivado/2020.2/data/boards/board_files/
+
+
+[Next](docs/intro/Readme.md)
+
