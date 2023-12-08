@@ -40,7 +40,7 @@ Vivado ML Edition - 2022.2 Installation
 
 # Test cable driver and serial port setup 
 
-Additional recommeneded packages for new Linux system install:
+Additional recommended packages for new Linux system install:
 
 `sudo apt-get install net-tools git meld geany picocom geany-plugin-vc openssh-server pinta dos2unix pico`
 
