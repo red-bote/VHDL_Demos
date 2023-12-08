@@ -59,5 +59,4 @@ Install Vivado Board Files for Digilent FPGA Boards from [their GitHub repo](htt
     cp -r ~/vivado-boards/new/board_files/basys3/  /Tools/Vivado/2020.2/data/boards/board_files/
 ```
 
-[Next](docs/intro/Readme.md)
-
+Please see the [wiki pages](https://github.com/red-bote/VHDL_Demos/wiki) for additional documentation.
