@@ -12,19 +12,28 @@ The new Vivado project should include:
 - Add _Basys3.xdc_ constraints file
 - I/O Port Definitions _clk_, _reset_, _led_
 
+&nbsp;
 
-In _Define Module_ diaglog, there are no I/O Port Definitions necessary for creating a simulation module:
+In the _Define Module_ dialog, leave the I/O Port Definitions blank, they are not used for creating the top-level module for the simulation :
 
-<img align="right" width="726" height="497" src="docs/images/AnsxPV.png">
-
-
-In _Run Behavioral Simulation_, set the default initial similation period in the _Simulation_ tab in 
-
-<img align="right" width="726" height="497" src="docs/images/eblflb.png">
+<img align="center" width="726" height="497" src="images/AnsxPV.png">
 
 
-In _Simulation Settings_, the default initial similation period cab be modified under the _Simulation_ tab in property `xsim.simulate.runtime`
+&nbsp;
 
-<img align="right" width="726" height="497" src="docs/images/bXXZdH.png">
+Go to Flow Navigator, under SIMULATION, right-click Run Simulation, and select *Run Behavioral Simulation*: 
 
+<img align="center" src="images/eblflb.png">
+
+
+&nbsp;
+
+In *Simulation Settings*, the default initial similation period may be modified under the *Simulation* tab in property `xsim.simulate.runtime`
+
+<!--- ![myimg](images/bXXZdH.png){: height="720px" width="737px" align="center"} --->
+
+<img align="center" src="images/bXXZdH.png">
+
+
+&nbsp;
 
