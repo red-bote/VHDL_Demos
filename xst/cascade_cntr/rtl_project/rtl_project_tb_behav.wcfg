@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="rtl_project_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="rtl_project_tb" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="0fs"></ZoomStartTime>
+      <ZoomEndTime time="352201fs"></ZoomEndTime>
+      <Cursor1Time time="0fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="138"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="6" />
+   <wvobject type="logic" fp_name="/rtl_project_tb/clk">
+      <obj_property name="ElementShortName">clk</obj_property>
+      <obj_property name="ObjectShortName">clk</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_project_tb/reset">
+      <obj_property name="ElementShortName">reset</obj_property>
+      <obj_property name="ObjectShortName">reset</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_project_tb/sw">
+      <obj_property name="ElementShortName">sw[15:0]</obj_property>
+      <obj_property name="ObjectShortName">sw[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_project_tb/led">
+      <obj_property name="ElementShortName">led[15:0]</obj_property>
+      <obj_property name="ObjectShortName">led[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_project_tb/DUT/cntr5_out_n0">
+      <obj_property name="ElementShortName">cntr5_out_n0[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cntr5_out_n0[3:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_project_tb/DUT/cntr5_out_n1">
+      <obj_property name="ElementShortName">cntr5_out_n1[3:0]</obj_property>
+      <obj_property name="ObjectShortName">cntr5_out_n1[3:0]</obj_property>
+   </wvobject>
+</wave_config>
