@@ -50,7 +50,7 @@ begin
            led => open
            );
 
-    reset <= '1', '0' after 18ns;
+    reset <= '1', '0' after 12ns;
     clk <= not clk after 5ns;
 
 end Behavioral;
