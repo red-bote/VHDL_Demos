@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.all;
 --use UNISIM.VComponents.all;
 
 entity rams_top is
-    generic (constant CNTR_BITS : integer := 30);
+    generic (constant CNTR_BITS : integer := 31);
     port (
         clk : in std_logic;
         reset : in std_logic;
@@ -39,13 +39,13 @@ entity rams_top is
 end rams_top;
 
 architecture Behavioral of rams_top is
-    signal counter_out : integer range 0 to 2**CNTR_BITS-1;
+    signal counter_out : integer range 0 to (2**CNTR_BITS)-1;
     signal ram_address : std_logic_vector(5 downto 0);
     signal ram_data : std_logic_vector(19 downto 0);
 begin
 
     u_counter : entity work.counters_8
-        generic map(MAX => 2 ** CNTR_BITS)
+        generic map(MAX => (2 ** CNTR_BITS)-1)
         port map(
             C => clk,
             CLR => reset, -- active high
@@ -57,7 +57,7 @@ begin
         if rising_edge (clk)
         then
             counter_reg := to_unsigned(counter_out, counter_reg'length);
-            ram_address <= std_logic_vector(counter_reg(CNTR_BITS-1 downto 24));
+            ram_address <= std_logic_vector(counter_reg(CNTR_BITS-1 downto 25));
         end if;
     end process clk_proc;
 
