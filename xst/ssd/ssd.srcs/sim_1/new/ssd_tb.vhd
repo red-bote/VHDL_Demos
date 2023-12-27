@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 12/26/2023 03:25:10 PM
+-- Create Date: 12/26/2023 04:39:27 PM
 -- Design Name: 
--- Module Name: ssd_top - Behavioral
+-- Module Name: ssd_tb - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,25 +31,27 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity ssd_top is
-    Port ( clk : in STD_LOGIC;
-           reset : in STD_LOGIC;
-           seg : out STD_LOGIC_VECTOR (6 downto 0);
-           an : out STD_LOGIC_VECTOR (3 downto 0);
-           sw : in STD_LOGIC_VECTOR (15 downto 0));
-end ssd_top;
+entity ssd_tb is
+--  Port ( );
+end ssd_tb;
 
-architecture Behavioral of ssd_top is
-    signal count : std_logic_vector(15 downto 0);
+architecture Behavioral of ssd_tb is
+    signal reset : std_logic;
+    signal clk : std_logic := '0';
+    signal seg : std_logic_vector(6 downto 0);
+    signal an : std_logic_vector(3 downto 0);
+    signal sw : std_logic_vector(15 downto 0) := "0000000000001111";
 begin
-    count <= sw;
-    u_ssd : entity work.ssd
+
+    u_dut : entity work.ssd_top
     Port map (
         clk => clk,
         reset => reset,
-        data => count,
         seg => seg,
-        an => an
-        );
+        an => an,
+        sw => sw
+    );
+    reset <= '1' , '0' after 5ns;
+    clk <= not clk after 5ns;
 
 end Behavioral;
