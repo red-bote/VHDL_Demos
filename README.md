@@ -11,7 +11,7 @@ The Basys 3 is a demo board for the Xilinx [Artix-7 FPGA](https://www.xilinx.com
 # Prerequisites
 
 * Vivado Download requires Xilinx/AMD account registration with email.
-* [Vivado 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2022-2.html) release is used, as support of Artix-7 is removed in subsequent Vivado releases. 
+* [Vivado 2020.2](https://www.xilinx.com/support/download/index.html/content/xilinx/en/downloadNav/vivado-design-tools/2022-2.html) release is used (for forgotten reasons). 
 * Recommend the unified Windows/Linux installer (45Gb) for Vivado ML Edition - 2022.2  Full Product Installation: _Xilinx_Unified_2020.2_1118_1232.tar.gz_
 * Plan 60 Gb installation size (on Linux, can be system-wide, or local to user)
 * Note Vivado 2020.2 support stops at Ubuntu 20.04

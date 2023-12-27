@@ -43,7 +43,7 @@ end counters_8_top;
 architecture Behavioral of counters_8_top is
 
     signal counter_out : integer range 0 to CNTR_MAX - 1; --  integer range 0 to MAX-1
-    signal counter_reg : unsigned(CNTR_BITS - 1 downto 0); -- 30 bits wide, to match width of integer output Q from counter
+--    signal counter_reg : unsigned(CNTR_BITS - 1 downto 0); -- 30 bits wide, to match width of integer output Q from counter
     signal led_out_reg : std_logic_vector(CNTR_BITS - 1 downto 0);
 begin
 
