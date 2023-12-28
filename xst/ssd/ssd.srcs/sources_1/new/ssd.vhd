@@ -46,6 +46,9 @@ architecture Behavioral of ssd is
     signal rfsh_cnt : std_logic_vector(1 downto 0);
     signal anode_sel : std_logic_vector(2 downto 0); -- temp for 1-8 decoder
     signal decoder_out : std_logic_vector(7 downto 0); -- temp for 1-8 decoder
+
+    signal ram_data_out : std_logic_vector (31 downto 0);
+    signal ram_address : std_logic_vector (5 downto 0);
 begin
     -- 2-bits counter selects 1 of 4 anodes, and also selects 1 of the 4 sets 
     -- of 4-bit digits from the 16-bit data value
@@ -67,29 +70,39 @@ begin
     end process p_digits;
 
     -- segment lookup table
-    seg_decode_p : process (digit_bits)
-    begin
-        case digit_bits is
-            when "0000" => seg_data <= "01000000"; -- "0" 
-            when "0001" => seg_data <= "01111001"; -- "1"
-            when "0010" => seg_data <= "00100100"; -- "2"
-            when "0011" => seg_data <= "00110000"; -- "3"
-            when "0100" => seg_data <= "00011001"; -- "4"
-            when "0101" => seg_data <= "00010010"; -- "5"
-            when "0110" => seg_data <= "00000010"; -- "6"
-            when "0111" => seg_data <= "01111000"; -- "7"
-            when "1000" => seg_data <= "00000000"; -- "8" 
-            when "1001" => seg_data <= "00010000"; -- "9"
-            when "1010" => seg_data <= "00001000"; -- "A"
-            when "1011" => seg_data <= "00000011"; -- "B"
-            when "1100" => seg_data <= "01000110"; -- "C"
-            when "1101" => seg_data <= "00100001"; -- "D"
-            when "1110" => seg_data <= "00000110"; -- "E"
-            when others => seg_data <= "00001110"; -- "F" (1111) 
-        end case;
-    end process seg_decode_p;
+    ram_address <= "00" & digit_bits;
+    u_segment_rom : entity work.rams_20c
+    port map (
+        clk => clk, 
+        we => '0',
+        addr => ram_address, -- in std_logic_vector(5 downto 0);   
+        din => (others => '0'), -- in std_logic_vector(31 downto 0);   
+        dout => ram_data_out -- out std_logic_vector(31 downto 0));
+    );
+    seg <= ram_data_out(6 downto 0);
 
-    seg <= seg_data(6 downto 0);
+--    seg_decode_p : process (digit_bits)
+--    begin
+--        case digit_bits is
+--            when "0000" => seg_data <= "01000000"; -- "0" 
+--            when "0001" => seg_data <= "01111001"; -- "1"
+--            when "0010" => seg_data <= "00100100"; -- "2"
+--            when "0011" => seg_data <= "00110000"; -- "3"
+--            when "0100" => seg_data <= "00011001"; -- "4"
+--            when "0101" => seg_data <= "00010010"; -- "5"
+--            when "0110" => seg_data <= "00000010"; -- "6"
+--            when "0111" => seg_data <= "01111000"; -- "7"
+--            when "1000" => seg_data <= "00000000"; -- "8" 
+--            when "1001" => seg_data <= "00010000"; -- "9"
+--            when "1010" => seg_data <= "00001000"; -- "A"
+--            when "1011" => seg_data <= "00000011"; -- "B"
+--            when "1100" => seg_data <= "01000110"; -- "C"
+--            when "1101" => seg_data <= "00100001"; -- "D"
+--            when "1110" => seg_data <= "00000110"; -- "E"
+--            when others => seg_data <= "00001110"; -- "F" (1111) 
+--        end case;
+--    end process seg_decode_p;
+--    seg <= seg_data(6 downto 0);
 
     -- anode selection is low 4-bits of the 1-8 decoder
     anode_sel <= '0' & rfsh_cnt;
