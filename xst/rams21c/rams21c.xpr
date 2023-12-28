@@ -6,7 +6,7 @@
 <Project Version="7" Minor="54" Path="/home/xubuntu/src/VHDL_Demos/xst/rams21c/rams21c.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
-    <Option Name="Id" Val="ac8862780f7a43a299a4dab9233dad08"/>
+    <Option Name="Id" Val="9d1f8896960a4b2ead23b42cc46e8842"/>
     <Option Name="Part" Val="xc7a35tcpg236-1"/>
     <Option Name="CompiledLibDir" Val="$PCACHEDIR/compile_simlib"/>
     <Option Name="CompiledLibDirXSim" Val=""/>
@@ -75,18 +75,10 @@
   <FileSets Version="1" Minor="31">
     <FileSet Name="sources_1" Type="DesignSrcs" RelSrcDir="$PSRCDIR/sources_1" RelGenDir="$PGENDIR/sources_1">
       <Filter Type="Srcs"/>
-      <File Path="$PSRCDIR/sources_1/imports/counters/counters_8.vhd">
-        <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../tmp/xilinx_xstug_examples-master/HDL_Coding_Techniques/counters/counters_8.vhd"/>
-          <Attr Name="ImportTime" Val="1435723277"/>
-          <Attr Name="UsedIn" Val="synthesis"/>
-          <Attr Name="UsedIn" Val="simulation"/>
-        </FileInfo>
-      </File>
       <File Path="$PSRCDIR/sources_1/imports/rams/rams_21c.vhd">
         <FileInfo>
-          <Attr Name="ImportPath" Val="$PPRDIR/../../../../tmp/xilinx_xstug_examples-master/HDL_Coding_Techniques/rams/rams_21c.vhd"/>
-          <Attr Name="ImportTime" Val="1435723277"/>
+          <Attr Name="ImportPath" Val="$PPRDIR/../../../../tmp/xstug_examples/HDL_Coding_Techniques/rams/rams_21c.vhd"/>
+          <Attr Name="ImportTime" Val="1258746314"/>
           <Attr Name="UsedIn" Val="synthesis"/>
           <Attr Name="UsedIn" Val="simulation"/>
         </FileInfo>
@@ -114,6 +106,7 @@
         </FileInfo>
       </File>
       <Config>
+        <Option Name="TargetConstrsFile" Val="$PSRCDIR/constrs_1/imports/digilent-xdc/Basys-3-Master.xdc"/>
         <Option Name="ConstrsType" Val="XDC"/>
       </Config>
     </FileSet>
