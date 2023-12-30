@@ -44,13 +44,22 @@ architecture Behavioral of rams_top is
 begin
     ram_addr <= sw(5 downto 0);
 
-    u_rom : entity work.rams_21c
-    port map (
+--    u_rom : entity work.rams_21c
+--    port map (
+--        clk => clk,
+--        en => '1',
+--        addr => ram_addr, -- in std_logic_vector(5 downto 0);
+--        data => ram_data -- out std_logic_vector(19 downto 0));
+--    );
+
+--    u_ram : entity work.ram_comp(arch_rams_21a)
+--    u_ram : entity work.ram_comp(arch_rams_21c)
+    u_ram : entity work.ram_comp(arch_roms_1)
+    Port map(
         clk => clk,
-        en => '1',
-        addr => ram_addr, -- in std_logic_vector(5 downto 0);
-        data => ram_data -- out std_logic_vector(19 downto 0));
-    );
+        addr => ram_addr,
+        data => ram_data
+        );
 
     out_proc : process(clk)
     begin
