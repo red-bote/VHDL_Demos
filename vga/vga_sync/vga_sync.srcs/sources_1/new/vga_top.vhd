@@ -49,6 +49,11 @@ architecture Behavioral of vga_top is
     signal clk_vga : std_logic;
     signal reset_l : std_logic;
     signal video_on : std_logic;
+
+    signal RGB : std_logic_vector(23 downto 0);
+    signal vga_col : integer;
+    signal vga_row : integer;
+
 begin
     q_clkdiv : entity work.counters_1
     port map(
@@ -78,14 +83,30 @@ begin
             h_sync => Hsync,
             v_sync => Vsync,
             disp_ena => video_on,
-            column => open, -- pixel_x,
-            row => open, -- pixel_y,
+            column => vga_col,
+            row => vga_row,
             n_blank => open,
             n_sync => open
         );
 
-    vgaRed    <= sw(11 downto 8) when video_on = '1' else (others => '0');
-    vgaGreen  <= sw(7 downto 4) when video_on = '1' else (others => '0');
-    vgaBlue   <= sw(3 downto 0) when video_on = '1' else (others => '0');
+    u_image_gen : entity work.hw_image_generator
+    generic map(
+        pixels_y => 240,
+        pixels_x => 320)
+    port map(
+        disp_ena => video_on,
+        row => vga_row,
+        column => vga_col,
+        red => RGB(23 downto 16),
+        green => RGB(15 downto 8),
+        blue => RGB(7 downto 0)
+    );
+    -- connect upper 4-bits of each color to output ports
+    vgaRed <= RGB(23 downto 20);
+    vgaGreen <= RGB(15 downto 12);
+    vgaBlue <= RGB(7 downto 4);
+--    vgaRed    <= sw(11 downto 8) when video_on = '1' else (others => '0');
+--    vgaGreen  <= sw(7 downto 4) when video_on = '1' else (others => '0');
+--    vgaBlue   <= sw(3 downto 0) when video_on = '1' else (others => '0');
 
 end Behavioral;
