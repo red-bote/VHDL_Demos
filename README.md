@@ -31,7 +31,7 @@ Vivado ML Edition - 2022.2 Installation
 
 * The web installer does a good job of resuming broken downloads, but could be an all-niter depending on your Internet!
 
-* Install Xilinx cable drivers (requires root, updates udev rules _/etc/udev/rules.d/52-xilinx_ etc. )
+* Install [Xilinx cable drivers](https://docs.xilinx.com/r/en-US/ug973-vivado-release-notes-install-license/Installing-Cable-Drivers) (requires root, updates udev rules _/etc/udev/rules.d/52-xilinx_ etc. )
 
 ```
     cd /Tools/Vivado/2020.2/data/xicom/cable_drivers/lin64/install_script/install_drivers/
