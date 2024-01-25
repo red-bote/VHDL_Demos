@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 12/02/2023 09:09:16 PM
+-- Create Date: 01/16/2024 08:09:02 PM
 -- Design Name: 
--- Module Name: vga_top - Behavioral
+-- Module Name: rtl_top - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,41 +31,50 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity vga_top is
+entity rtl_top is
     Port ( clk : in STD_LOGIC;
            reset : in STD_LOGIC;
+           sw : in STD_LOGIC_VECTOR (15 downto 0);
            Hsync : out STD_LOGIC;
            Vsync : out STD_LOGIC;
            vgaRed : out STD_LOGIC_VECTOR (3 downto 0);
            vgaGreen : out STD_LOGIC_VECTOR (3 downto 0);
            vgaBlue : out STD_LOGIC_VECTOR (3 downto 0));
-end vga_top;
+end rtl_top;
 
-architecture Behavioral of vga_top is
-    signal clk_count : std_logic_vector (3 downto 0);
+architecture Behavioral of rtl_top is
     signal reset_l : std_logic;
+    signal video_on : std_logic;
+    signal clk_25 : std_logic;
+    signal vga_hs : std_logic;
+    signal vga_vs : std_logic;
 begin
-
     reset_l <= not reset;
 
-    -- counters_1
-    clkdiv : entity work.counters_1
-    port map(
-        C => clk,
-        CLR => reset,
-        Q => clk_count
-        );
+    u_vga_clk : entity work.clk_wiz_0_clk_wiz_0_clk_wiz
+    port map (
+        clk_out1 => clk_25,
+        reset => reset,
+        locked => open,
+        clk_in1 => clk
+    );
 
-    -- CRTC
-    crtc : entity work.CRTC
-    port map(
-        i_clk_vga => clk_count(1),
-        i_reset_l => reset_l,
-        o_hsync => Hsync,
-        o_vsync => Vsync,
+    u_crtc : entity work.crtc
+    Port map (
+        clk_vga => clk_25,
+        reset_l => reset_l,
+        video_on => video_on,
+        o_hsync => vga_hs,
+        o_vsync => vga_vs,
         o_red => vgaRed,
         o_green => vgaGreen,
-        o_blue => vgaBlue
+        o_blue => vgaBlue        
         );
+
+    Hsync <= vga_hs;
+    Vsync <= vga_vs;
+--    vgaRed    <= sw(11 downto 8) when video_on = '1' else (others => '0');
+--    vgaGreen  <= sw(7 downto 4) when video_on = '1' else (others => '0');
+--    vgaBlue   <= sw(3 downto 0) when video_on = '1' else (others => '0');
 
 end Behavioral;

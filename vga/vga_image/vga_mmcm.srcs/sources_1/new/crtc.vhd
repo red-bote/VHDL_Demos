@@ -2,9 +2,9 @@
 -- Company: 
 -- Engineer: 
 -- 
--- Create Date: 12/02/2023 09:15:35 PM
+-- Create Date: 01/16/2024 08:13:52 PM
 -- Design Name: 
--- Module Name: CRTC - Behavioral
+-- Module Name: crtc - Behavioral
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
@@ -31,18 +31,18 @@ use IEEE.STD_LOGIC_1164.ALL;
 --library UNISIM;
 --use UNISIM.VComponents.all;
 
-entity CRTC is
-    Port ( i_clk_vga : in STD_LOGIC; -- 25 Mhz
-           i_reset_l : in STD_LOGIC;
---           o_video_on : out STD_LOGIC;
+entity crtc is
+    Port ( clk_vga : in STD_LOGIC;
+           reset_l : in STD_LOGIC;
+           video_on : out STD_LOGIC;
            o_hsync : out STD_LOGIC;
            o_vsync : out STD_LOGIC;
            o_red : out STD_LOGIC_VECTOR (3 downto 0);
            o_green : out STD_LOGIC_VECTOR (3 downto 0);
            o_blue : out STD_LOGIC_VECTOR (3 downto 0));
-end CRTC;
+end crtc;
 
-architecture Behavioral of CRTC is
+architecture Behavioral of crtc is
     signal vga_col : integer;
     signal vga_row : integer;
     signal hsync : std_logic;
@@ -50,10 +50,11 @@ architecture Behavioral of CRTC is
     signal disp_ena : std_logic;
     signal RGB : std_logic_vector(23 downto 0);
 begin
+
     u_vga_control : entity work.vga_controller
         GENERIC map (
             h_pulse  => 96,
-            h_bp     => 46,
+            h_bp     => 46, -- verify
             h_pixels => 640,
             h_fp     => 16,
             h_pol    => '0',
@@ -63,18 +64,18 @@ begin
             v_fp     => 10,
             v_pol    => '0')
         port map(
-            pixel_clk => i_clk_vga, -- 25 Mhz
-            reset_n => i_reset_l,
-            h_sync => hsync,
-            v_sync => vsync,
+            pixel_clk => clk_vga, -- 25 Mhz
+            reset_n => reset_l,
+            h_sync => Hsync,
+            v_sync => Vsync,
             disp_ena => disp_ena,
-            column => vga_col,
-            row => vga_row,
+            column => vga_col, -- pixel_x,
+            row => vga_row, -- pixel_y,
             n_blank => open,
             n_sync => open
         );
 
-    q_image_gen : entity work.hw_image_generator
+    u_image_gen : entity work.hw_image_generator
     generic map(
         pixels_y => 240,
         pixels_x => 320)
@@ -86,8 +87,7 @@ begin
         green => RGB(15 downto 8),
         blue => RGB(7 downto 0)
     );
-
---    o_video_on <= disp_ena;
+    video_on <= disp_ena;
     o_hsync <= hsync;
     o_vsync <= vsync;
     o_red <= RGB(23 downto 20);
