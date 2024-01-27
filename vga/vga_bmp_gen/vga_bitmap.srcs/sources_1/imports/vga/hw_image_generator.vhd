@@ -30,7 +30,7 @@ use IEEE.NUMERIC_STD.ALL;
 ENTITY hw_image_generator IS
   GENERIC(
     pixels_y :  INTEGER := 16;   --row that first color will persist until
-    pixels_x :  INTEGER := 32);  --column that first color will persist until
+    pixels_x :  INTEGER := 16);  --column that first color will persist until
   PORT(
     pixel_clk :  IN   STD_LOGIC;
     disp_ena :  IN   STD_LOGIC;  --display enable ('1' = display time, '0' = blanking time)
