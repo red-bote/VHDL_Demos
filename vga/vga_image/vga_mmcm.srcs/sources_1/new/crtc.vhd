@@ -54,7 +54,7 @@ begin
     u_vga_control : entity work.vga_controller
         GENERIC map (
             h_pulse  => 96,
-            h_bp     => 46, -- verify
+            h_bp     => 48, --46, -- verify
             h_pixels => 640,
             h_fp     => 16,
             h_pol    => '0',
@@ -75,18 +75,30 @@ begin
             n_sync => open
         );
 
-    u_image_gen : entity work.hw_image_generator
-    generic map(
-        pixels_y => 240,
-        pixels_x => 320)
+--    u_image_gen_hw : entity work.hw_image_generator
+--    generic map(
+--        pixels_y => 240,
+--        pixels_x => 320)
+--    port map(
+--        disp_ena => disp_ena,
+--        row => vga_row,
+--        column => vga_col,
+--        red => RGB(23 downto 16),
+--        green => RGB(15 downto 8),
+--        blue => RGB(7 downto 0)
+--    );
+
+    u_image_gen_rom : entity work.rom_image
     port map(
         disp_ena => disp_ena,
+        clk => clk_vga, 
         row => vga_row,
         column => vga_col,
         red => RGB(23 downto 16),
         green => RGB(15 downto 8),
         blue => RGB(7 downto 0)
     );
+
     video_on <= disp_ena;
     o_hsync <= hsync;
     o_vsync <= vsync;

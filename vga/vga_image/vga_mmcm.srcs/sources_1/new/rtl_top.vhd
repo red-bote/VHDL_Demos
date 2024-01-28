@@ -48,16 +48,25 @@ architecture Behavioral of rtl_top is
     signal clk_25 : std_logic;
     signal vga_hs : std_logic;
     signal vga_vs : std_logic;
+    signal d_counters_1 : std_logic_vector(3 downto 0);
 begin
     reset_l <= not reset;
 
-    u_vga_clk : entity work.clk_wiz_0_clk_wiz_0_clk_wiz
-    port map (
-        clk_out1 => clk_25,
-        reset => reset,
-        locked => open,
-        clk_in1 => clk
+--    u_vga_clk : entity work.clk_wiz_0_clk_wiz_0_clk_wiz
+--    port map (
+--        clk_out1 => clk_25,
+--        reset => reset,
+--        locked => open,
+--        clk_in1 => clk
+--    );
+
+    u_vga_clk : entity work.counters_1
+    port map(
+        C => clk,
+        CLR => reset,
+        Q => d_counters_1 ---  out std_logic_vector(3 downto 0)
     );
+    clk_25 <= d_counters_1(1);
 
     u_crtc : entity work.crtc
     Port map (

@@ -10,15 +10,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="899371fs"></ZoomStartTime>
-      <ZoomEndTime time="1031447fs"></ZoomEndTime>
-      <Cursor1Time time="2000000fs"></Cursor1Time>
+      <ZoomStartTime time="15257702000fs"></ZoomStartTime>
+      <ZoomEndTime time="15258024001fs"></ZoomEndTime>
+      <Cursor1Time time="15257785000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
       <NameColumnWidth column_width="159"></NameColumnWidth>
-      <ValueColumnWidth column_width="76"></ValueColumnWidth>
+      <ValueColumnWidth column_width="68"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="3" />
+   <WVObjectSize size="10" />
    <wvobject type="logic" fp_name="/rtl_top_tb/clk">
       <obj_property name="ElementShortName">clk</obj_property>
       <obj_property name="ObjectShortName">clk</obj_property>
@@ -27,8 +27,36 @@
       <obj_property name="ElementShortName">reset</obj_property>
       <obj_property name="ObjectShortName">reset</obj_property>
    </wvobject>
-   <wvobject type="logic" fp_name="/rtl_top_tb/u_dut/clk_25">
-      <obj_property name="ElementShortName">clk_25</obj_property>
-      <obj_property name="ObjectShortName">clk_25</obj_property>
+   <wvobject type="logic" fp_name="/rtl_top_tb/u_dut/u_crtc/clk_vga">
+      <obj_property name="ElementShortName">clk_vga</obj_property>
+      <obj_property name="ObjectShortName">clk_vga</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_top_tb/u_dut/u_crtc/video_on">
+      <obj_property name="ElementShortName">video_on</obj_property>
+      <obj_property name="ObjectShortName">video_on</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_top_tb/u_dut/u_crtc/hsync">
+      <obj_property name="ElementShortName">hsync</obj_property>
+      <obj_property name="ObjectShortName">hsync</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_top_tb/u_dut/u_crtc/vsync">
+      <obj_property name="ElementShortName">vsync</obj_property>
+      <obj_property name="ObjectShortName">vsync</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/rtl_top_tb/u_dut/u_crtc/vga_row">
+      <obj_property name="ElementShortName">vga_row</obj_property>
+      <obj_property name="ObjectShortName">vga_row</obj_property>
+   </wvobject>
+   <wvobject type="other" fp_name="/rtl_top_tb/u_dut/u_crtc/vga_col">
+      <obj_property name="ElementShortName">vga_col</obj_property>
+      <obj_property name="ObjectShortName">vga_col</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_top_tb/u_dut/u_crtc/u_image_gen_rom/u_bmp_rom/A_r">
+      <obj_property name="ElementShortName">A_r[9:0]</obj_property>
+      <obj_property name="ObjectShortName">A_r[9:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_top_tb/u_dut/u_crtc/u_image_gen_rom/u_bmp_rom/D">
+      <obj_property name="ElementShortName">D[31:0]</obj_property>
+      <obj_property name="ObjectShortName">D[31:0]</obj_property>
    </wvobject>
 </wave_config>
