@@ -72,7 +72,7 @@ begin
     Port map (
         clk_vga => clk_25,
         reset_l => reset_l,
-        video_on => video_on,
+        o_video_on => video_on,
         o_hsync => vga_hs,
         o_vsync => vga_vs,
         o_red => vgaRed,

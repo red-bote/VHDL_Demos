@@ -32,7 +32,7 @@ use IEEE.NUMERIC_STD.ALL;
 --use UNISIM.VComponents.all;
 
 entity rom_image is
-    Port ( disp_ena : in STD_LOGIC;
+    Port ( --disp_ena : in STD_LOGIC;
            clk : in std_logic;
            row : in integer;
            column : in integer;
