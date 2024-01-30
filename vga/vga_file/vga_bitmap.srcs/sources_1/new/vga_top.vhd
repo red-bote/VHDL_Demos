@@ -55,10 +55,11 @@ begin
         Q => clk_count
         );
 
-    u_crtc : entity work.CRTC
+    u_crtc : entity work.crtc
     port map(
-        i_clk_vga => clk_count(1),
-        i_reset_l => reset_l,
+        clk_vga => clk_count(1),
+        reset_l => reset_l,
+        o_video_on => open,
         o_hsync => Hsync,
         o_vsync => Vsync,
         o_red => vgaRed,
