@@ -84,12 +84,16 @@ begin
             n_sync => open
         );
 
-    -- address the ROM by vga_row
     p_charg_rom_addrgen : process(vga_row, vga_col)
     begin
         row_vector <= std_logic_vector(to_unsigned(vga_row, row_vector'length));
         col_vector <= std_logic_vector(to_unsigned(vga_col, col_vector'length));
-        charg_rom_addr <= row_vector(8 downto 0);
+
+--        charg_rom_addr <= row_vector(8 downto 0);
+        -- all 64 characters fit on 1 row of 640x480 display
+        charg_rom_addr(8 downto 3) <= col_vector(8 downto 3);
+        charg_rom_addr(2 downto 0) <= row_vector(2 downto 0);
+
     end process p_charg_rom_addrgen;
 
     u_charg_rom : entity work.charg_rom
