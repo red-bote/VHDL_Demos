@@ -3,7 +3,7 @@
 <!--                                                         -->
 <!-- Copyright 1986-2020 Xilinx, Inc. All Rights Reserved.   -->
 
-<Project Version="7" Minor="54" Path="/home/xubuntu/hdl/VHDL_Demos/vga/vga_file/vga_bitmap.xpr">
+<Project Version="7" Minor="54" Path="/home/xubuntu/hdl/VHDL_Demos/vga/vga_chargen/vga_char_gen.xpr">
   <DefaultLaunch Dir="$PRUNDIR"/>
   <Configuration>
     <Option Name="Id" Val="d0d68baab66c4d12919dd5922812f129"/>

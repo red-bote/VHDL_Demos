@@ -51,7 +51,7 @@ architecture Behavioral of crtc is
     signal r_hsync : std_logic;
     signal r_vsync : std_logic;
     signal r_video_on : std_logic;
-    signal RGB : std_logic_vector(23 downto 0);
+    signal rgb : std_logic_vector(23 downto 0);
 
     signal charg_rom_addr : std_logic_vector(8 downto 0);
     signal charg_rom_data : std_logic_vector(7 downto 0);
@@ -110,7 +110,7 @@ begin
         sel => col_vector(2 downto 0),
         do => pixel_bit
     );
-    RGB <= (others => '1') when pixel_bit = '1' else (others => '0') ;
+    rgb <= (others => '1') when pixel_bit = '1' else (others => '0') ;
 
     -- register the control signals to sync them with the RAM data
     p_video_sync : process(clk_vga)
