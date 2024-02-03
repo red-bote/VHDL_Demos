@@ -84,33 +84,16 @@ begin
             n_sync => open
         );
 
-    p_charg_rom_addrgen : process(vga_row, vga_col)
-    begin
-        row_vector <= std_logic_vector(to_unsigned(vga_row, row_vector'length));
-        col_vector <= std_logic_vector(to_unsigned(vga_col, col_vector'length));
+    row_vector <= std_logic_vector(to_unsigned(vga_row, row_vector'length));
+    col_vector <= std_logic_vector(to_unsigned(vga_col, col_vector'length));
 
---        charg_rom_addr <= row_vector(8 downto 0);
-        -- all 64 characters fit on 1 row of 640x480 display
-        charg_rom_addr(8 downto 3) <= col_vector(8 downto 3);
-        charg_rom_addr(2 downto 0) <= row_vector(2 downto 0);
-
-    end process p_charg_rom_addrgen;
-
-    u_charg_rom : entity work.charg_rom
-	port map (
-        Clk => clk_vga,
-        A => charg_rom_addr, -- in std_logic_vector(8 downto 0);
-        D => charg_rom_data -- out std_logic_vector(7 downto 0)
-	);
-
-    -- "shift" the pixel of the current scan column out of the character row data
-    u_char_pix_mux: entity work.multiplexers_1
-    port map(
-        di => charg_rom_data,
-        sel => col_vector(2 downto 0),
-        do => pixel_bit
-    );
-    rgb <= (others => '1') when pixel_bit = '1' else (others => '0') ;
+    u_char_gen : entity work.char_gen
+    Port map ( 
+        clk => clk_vga,
+        row => row_vector,
+        col => col_vector,
+        rgb => rgb
+        );
 
     -- register the control signals to sync them with the RAM data
     p_video_sync : process(clk_vga)
@@ -122,13 +105,13 @@ begin
         end if;
     end process p_video_sync;
 
-    -- gate the video data from the ROM only if within a valid image time
-    p_video_enable : process(r_video_on, RGB)
+    -- gate the video data from the ROM only if within the visible portion of the VGA signal
+    p_video_enable : process(r_video_on, rgb)
     begin
         if r_video_on = '1' then
-            o_red <= RGB(23 downto 20);
-            o_green <= RGB(15 downto 12);
-            o_blue <= RGB(7 downto 4);
+            o_red <= rgb(23 downto 20);
+            o_green <= rgb(15 downto 12);
+            o_blue <= rgb(7 downto 4);
         else
             o_red <= (others => '0');
             o_green <= (others => '0');
