@@ -24,7 +24,7 @@ use IEEE.STD_LOGIC_1164.ALL;
 
 -- Uncomment the following library declaration if using
 -- arithmetic functions with Signed or Unsigned values
---use IEEE.NUMERIC_STD.ALL;
+use IEEE.NUMERIC_STD.ALL;
 
 -- Uncomment the following library declaration if instantiating
 -- any Xilinx leaf cells in this code.
@@ -36,12 +36,12 @@ entity crtc is
            reset : in STD_LOGIC;
            o_vsync : out STD_LOGIC;
            o_hsync : out STD_LOGIC;
-           o_rgb : out STD_LOGIC_VECTOR (11 downto 0);
+           o_rgb : out STD_LOGIC_VECTOR (23 downto 0);
            o_video_on : out STD_LOGIC);
 end crtc;
 
 architecture Behavioral of crtc is
-    signal rgb : std_logic_vector(11 downto 0);
+    signal rgb : std_logic_vector(23 downto 0);
     signal reset_l : std_logic;
     signal video_on : std_logic;
     signal hsync : std_logic;
@@ -51,6 +51,9 @@ architecture Behavioral of crtc is
     signal r_hsync : std_logic;
     signal r_vsync : std_logic;
     signal r_video_on : std_logic;
+
+    signal row_vector : STD_LOGIC_VECTOR (9 downto 0); --tmp?
+    signal col_vector : STD_LOGIC_VECTOR (9 downto 0); --tmp?
 begin
     reset_l <= not reset;
 
@@ -78,21 +81,32 @@ begin
             n_sync => open
         );
 
-    p_sync_sigs : process(clk)
+    row_vector <= std_logic_vector(to_unsigned(vga_row, row_vector'length));
+    col_vector <= std_logic_vector(to_unsigned(vga_col, col_vector'length));
+
+    u_char_gen : entity work.char_gen
+    Port map ( 
+        clk => clk,
+        row => row_vector,
+        col => col_vector,
+        rgb => rgb
+        );
+
+    -- register the control signals to sync them with the RAM data
+    p_video_sync : process(clk)
     begin
         if rising_edge(clk) then
             r_video_on <= video_on;
             r_hsync <= hsync;
             r_vsync <= vsync;
         end if;
-    end process p_sync_sigs;
+    end process p_video_sync;
 
     -- if video_on = '1'
-    o_rgb <= rgb;
+    o_rgb <= rgb when video_on = '1' else (others => '0');
 
     o_video_on <= r_video_on;
     o_hsync <= r_hsync;
     o_vsync <= r_vsync;
 
 end Behavioral;
-

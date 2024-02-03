@@ -47,7 +47,7 @@ architecture Behavioral of rtl_top is
     signal vga_clk : std_logic;
     signal video_on : std_logic;
     signal clk_cnt : std_logic_vector (3 downto 0);
-    signal rgb : std_logic_vector (11 downto 0);
+    signal rgb : std_logic_vector (23 downto 0);
 begin
 
     u_clk : entity work.clock_div
@@ -70,8 +70,11 @@ begin
 
     --led(15) <= vga_clk; -- temp
 
-    vgaRed <= sw(11 downto 8) when video_on = '1' else (others => '0');
-    vgaGreen <= sw(7 downto 4) when video_on = '1' else (others => '0');
-    vgaBlue <= sw(3 downto 0) when video_on = '1' else (others => '0');
+--    vgaRed <= sw(11 downto 8) when video_on = '1' else (others => '0');
+--    vgaGreen <= sw(7 downto 4) when video_on = '1' else (others => '0');
+--    vgaBlue <= sw(3 downto 0) when video_on = '1' else (others => '0');
+    vgaRed <= rgb(23 downto 20);
+    vgaGreen <= rgb(15 downto 12);
+    vgaBlue <= rgb(7 downto 4);
 
 end Behavioral;
