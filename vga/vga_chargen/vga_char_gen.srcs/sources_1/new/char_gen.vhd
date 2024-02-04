@@ -43,9 +43,11 @@ architecture Behavioral of char_gen is
     signal charg_rom_data : std_logic_vector(7 downto 0);
     signal pixel_bit : std_logic;
 
-    signal row_vector : std_logic_vector (9 downto 0) := row;
-    signal col_vector : std_logic_vector (9 downto 0) := col;
+    signal row_vector : std_logic_vector (9 downto 0);
+    signal col_vector : std_logic_vector (9 downto 0);
 begin
+    row_vector <= row;
+    col_vector <= col;
 
     -- character ROM address generator
     p_charg_rom_addrgen : process(row_vector, col_vector)
