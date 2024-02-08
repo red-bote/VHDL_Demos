@@ -41,7 +41,9 @@ end char_gen;
 architecture Behavioral of char_gen is
     signal charg_rom_addr : std_logic_vector(8 downto 0);
     signal charg_rom_data : std_logic_vector(7 downto 0);
+
     signal pixel_bit : std_logic;
+    signal pixel_shift : std_logic_vector(2 downto 0);
 
     signal row_vector : std_logic_vector (9 downto 0);
     signal col_vector : std_logic_vector (9 downto 0);
@@ -64,11 +66,19 @@ begin
         D => charg_rom_data -- out std_logic_vector(7 downto 0)
 	);
 
+    -- register the pixel shift to sync with 1-clock latency of ROM access
+    p_pix_sync : process(clk)
+    begin
+        if rising_edge(clk) then
+            pixel_shift <= col_vector(2 downto 0);
+        end if;
+    end process p_pix_sync;
+
     -- "shift" the pixel of the current scan column out of the character row data
     u_char_pix_mux: entity work.multiplexers_1
     port map(
         di => charg_rom_data,
-        sel => col_vector(2 downto 0),
+        sel => pixel_shift, -- col_vector(2 downto 0),
         do => pixel_bit
     );
     rgb <= (others => '1') when pixel_bit = '1' else (others => '0') ;
