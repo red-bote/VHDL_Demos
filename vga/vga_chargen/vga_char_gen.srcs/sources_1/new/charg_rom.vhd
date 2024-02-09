@@ -25,7 +25,7 @@ begin
 	begin
 		case to_integer(unsigned(A_r)) is
 		when 000000 => D <= "10000000";	-- 0x0000 -- add 1 pixel at 0,0 to check left-most column sync
-		when 000001 => D <= "00000000";	-- 0x0001
+		when 000001 => D <= "10000000";	-- 0x0001
 		when 000002 => D <= "00000000";	-- 0x0002
 		when 000003 => D <= "00000000";	-- 0x0003
 		when 000004 => D <= "00000000";	-- 0x0004
