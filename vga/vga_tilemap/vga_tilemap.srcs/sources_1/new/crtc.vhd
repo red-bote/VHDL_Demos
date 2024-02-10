@@ -1,6 +1,6 @@
 ----------------------------------------------------------------------------------
--- Company: 
--- Engineer: 
+-- Company:  Red~Bote
+-- Engineer: Red~Bote
 -- 
 -- Create Date: 02/01/2024 07:36:24 PM
 -- Design Name: 
@@ -8,7 +8,7 @@
 -- Project Name: 
 -- Target Devices: 
 -- Tool Versions: 
--- Description: 
+-- Description: Display controller to test character tiles
 -- 
 -- Dependencies: 
 -- 
@@ -48,13 +48,19 @@ architecture Behavioral of crtc is
     signal vsync : std_logic;
     signal vga_row : integer;
     signal vga_col : integer; 
-    signal r_hsync : std_logic;
-    signal r_vsync : std_logic;
-    signal r_video_on : std_logic;
 
-    signal row_vector : STD_LOGIC_VECTOR (9 downto 0); --tmp?
-    signal col_vector : STD_LOGIC_VECTOR (9 downto 0); --tmp?
+    signal r0_hsync : std_logic;
+    signal r0_vsync : std_logic;
+    signal r0_video_on : std_logic;
+
+    signal r1_hsync : std_logic;
+    signal r1_vsync : std_logic;
+    signal r1_video_on : std_logic;
+
+    signal row_vector : STD_LOGIC_VECTOR (9 downto 0) := (others => '0');
+    signal col_vector : STD_LOGIC_VECTOR (9 downto 0) := (others => '0');
 begin
+
     reset_l <= not reset;
 
     u_vga_control : entity work.vga_controller
@@ -89,24 +95,30 @@ begin
         clk => clk,
         row => row_vector,
         col => col_vector,
-        rgb => rgb
+        rgb_out => rgb
         );
 
     -- register the control signals to sync them with the RAM data
     p_video_sync : process(clk)
     begin
         if rising_edge(clk) then
-            r_video_on <= video_on;
-            r_hsync <= hsync;
-            r_vsync <= vsync;
+
+            r1_video_on <= video_on;
+            r1_hsync <= hsync;
+            r1_vsync <= vsync;
+
+            r0_video_on <= r1_video_on;
+            r0_hsync <= r1_hsync;
+            r0_vsync <= r1_vsync;
+
         end if;
     end process p_video_sync;
 
     -- if video_on = '1'
-    o_rgb <= rgb when video_on = '1' else (others => '0');
+    o_rgb <= rgb when r0_video_on = '1' else (others => '0');
 
-    o_video_on <= r_video_on;
-    o_hsync <= r_hsync;
-    o_vsync <= r_vsync;
+    o_video_on <= r0_video_on;
+    o_hsync <= r0_hsync;
+    o_vsync <= r0_vsync;
 
 end Behavioral;
