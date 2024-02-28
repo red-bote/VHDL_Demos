@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<wave_config>
+   <wave_state>
+   </wave_state>
+   <db_ref_list>
+      <db_ref path="rtl_tb_behav.wdb" id="1">
+         <top_modules>
+            <top_module name="rtl_tb" />
+            <top_module name="t80_pack" />
+         </top_modules>
+      </db_ref>
+   </db_ref_list>
+   <zoom_setting>
+      <ZoomStartTime time="99679390000fs"></ZoomStartTime>
+      <ZoomEndTime time="99685930001fs"></ZoomEndTime>
+      <Cursor1Time time="99679980000fs"></Cursor1Time>
+   </zoom_setting>
+   <column_width_setting>
+      <NameColumnWidth column_width="94"></NameColumnWidth>
+      <ValueColumnWidth column_width="66"></ValueColumnWidth>
+   </column_width_setting>
+   <WVObjectSize size="15" />
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/clk_cpu">
+      <obj_property name="ElementShortName">clk_cpu</obj_property>
+      <obj_property name="ObjectShortName">clk_cpu</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/NMI_n">
+      <obj_property name="ElementShortName">NMI_n</obj_property>
+      <obj_property name="ObjectShortName">NMI_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/M1_n">
+      <obj_property name="ElementShortName">M1_n</obj_property>
+      <obj_property name="ObjectShortName">M1_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/MREQ_n">
+      <obj_property name="ElementShortName">MREQ_n</obj_property>
+      <obj_property name="ObjectShortName">MREQ_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/IORQ_n">
+      <obj_property name="ElementShortName">IORQ_n</obj_property>
+      <obj_property name="ObjectShortName">IORQ_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/RD_n">
+      <obj_property name="ElementShortName">RD_n</obj_property>
+      <obj_property name="ObjectShortName">RD_n</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/WR_n">
+      <obj_property name="ElementShortName">WR_n</obj_property>
+      <obj_property name="ObjectShortName">WR_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/u0/R">
+      <obj_property name="ElementShortName">R[7:0]</obj_property>
+      <obj_property name="ObjectShortName">R[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/RFSH_n">
+      <obj_property name="ElementShortName">RFSH_n</obj_property>
+      <obj_property name="ObjectShortName">RFSH_n</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/u0/SP">
+      <obj_property name="ElementShortName">SP[15:0]</obj_property>
+      <obj_property name="ObjectShortName">SP[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/u0/PC">
+      <obj_property name="ElementShortName">PC[15:0]</obj_property>
+      <obj_property name="ObjectShortName">PC[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/A">
+      <obj_property name="ElementShortName">A[15:0]</obj_property>
+      <obj_property name="ObjectShortName">A[15:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/DI">
+      <obj_property name="ElementShortName">DI[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DI[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/DO">
+      <obj_property name="ElementShortName">DO[7:0]</obj_property>
+      <obj_property name="ObjectShortName">DO[7:0]</obj_property>
+   </wvobject>
+   <wvobject type="logic" fp_name="/rtl_tb/u_dut/vsync_l">
+      <obj_property name="ElementShortName">vsync_l</obj_property>
+      <obj_property name="ObjectShortName">vsync_l</obj_property>
+   </wvobject>
+</wave_config>
