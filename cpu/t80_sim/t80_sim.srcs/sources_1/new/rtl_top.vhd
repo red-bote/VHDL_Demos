@@ -41,7 +41,6 @@ architecture Behavioral of rtl_top is
     signal reset_l : std_logic;
     signal clk_vga : std_logic;
     signal clk_cpu : std_logic;
-    signal video_on : std_logic;
     signal clk_cnt : std_logic_vector (3 downto 0);
     signal rgb : std_logic_vector (23 downto 0);
 
@@ -73,16 +72,6 @@ begin
         );
     clk_vga <= clk_cnt(1);
     clk_cpu <= clk_cnt(3);
-
---    u_crtc : entity work.crtc
---    Port map (
---        clk => clk_vga,
---        reset => reset,
---        o_vsync => Vsync,
---        o_hsync => Hsync,
---        o_rgb => rgb,
---        o_video_on => video_on
---        );
 
     ram_cs <= cpu_addr(15);
     mem_rd <= not(cpu_rd_l or cpu_mreq_l);
@@ -118,7 +107,7 @@ begin
     -- hex2rom -b  a.bin  prog_rom 6l8s > t80_sim.srcs/sources_1/new/prog_rom.vhd
     u_prog_rom : entity work.prog_rom
 	port map (
-        Clk => clk_cpu,
+        Clk => clk,
         A => cpu_addr(5 downto 0), -- in std_logic_vector(5 downto 0);
         D => rom_data_out -- out std_logic_vector(7 downto 0)
     );
