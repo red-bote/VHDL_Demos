@@ -41,7 +41,6 @@ end cpu;
 architecture Behavioral of cpu is
 
     signal reset_l : std_logic;
---    signal vblank_int : std_logic;
 
     signal rom_data_out : std_logic_vector (7 downto 0);
     signal ram_wr_en : std_logic;
@@ -68,19 +67,8 @@ architecture Behavioral of cpu is
 begin
 
     reset_l <= not reset;
---    cpu_nmi_l <= vsync_l;
---    vblank_int <= not vsync_l;
 
     int_reg_clr <= not (cpu_iorq_l or cpu_m1_l);
-
---    u_int_reg : entity work.registers_6
---    port map (
---        clk   => clk_sys, -- in  std_logic;
---        rst   => int_reg_clr, -- in  std_logic;
---        clken => vblank_int, --  in  std_logic;
---        D     => '1', -- in  std_logic;
---        Q     => int_reg_out -- out std_logic
---        );
 
     u_int_reg_0 : entity work.registers_2
         port map(
@@ -89,7 +77,6 @@ begin
             CLR   => int_reg_clr, -- IORQ == 0 and M1 == 0
             Q     => int_reg_out
         );
-
     cpu_int_l <=  not int_reg_out;
 
     ram_cs <= cpu_addr(15);
@@ -120,10 +107,10 @@ begin
         do => ram_data_out -- out std_logic_vector(15 downto 0)
         );
 
-    -- hex2rom -b  a.bin  prog_rom 6l8s > t80_sim.srcs/sources_1/new/prog_rom.vhd
+    -- hex2rom -b  a.bin  prog_rom 9l8s > t80_irq.srcs/sources_1/new/prog_rom.vhd
     u_prog_rom : entity work.prog_rom
 	port map (
-        Clk => clk_cpu,
+        Clk => clk_sys,
         A => cpu_addr(8 downto 0),
         D => rom_data_out
     );
