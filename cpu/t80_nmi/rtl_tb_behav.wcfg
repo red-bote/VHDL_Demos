@@ -11,15 +11,15 @@
       </db_ref>
    </db_ref_list>
    <zoom_setting>
-      <ZoomStartTime time="99679390000fs"></ZoomStartTime>
-      <ZoomEndTime time="99685930001fs"></ZoomEndTime>
-      <Cursor1Time time="99679980000fs"></Cursor1Time>
+      <ZoomStartTime time="66079538934fs"></ZoomStartTime>
+      <ZoomEndTime time="66087689087fs"></ZoomEndTime>
+      <Cursor1Time time="66080880000fs"></Cursor1Time>
    </zoom_setting>
    <column_width_setting>
-      <NameColumnWidth column_width="94"></NameColumnWidth>
+      <NameColumnWidth column_width="90"></NameColumnWidth>
       <ValueColumnWidth column_width="66"></ValueColumnWidth>
    </column_width_setting>
-   <WVObjectSize size="15" />
+   <WVObjectSize size="14" />
    <wvobject type="logic" fp_name="/rtl_tb/u_dut/clk_cpu">
       <obj_property name="ElementShortName">clk_cpu</obj_property>
       <obj_property name="ObjectShortName">clk_cpu</obj_property>
@@ -75,9 +75,5 @@
    <wvobject type="array" fp_name="/rtl_tb/u_dut/u_cpu/u_t80/DO">
       <obj_property name="ElementShortName">DO[7:0]</obj_property>
       <obj_property name="ObjectShortName">DO[7:0]</obj_property>
-   </wvobject>
-   <wvobject type="logic" fp_name="/rtl_tb/u_dut/vsync_l">
-      <obj_property name="ElementShortName">vsync_l</obj_property>
-      <obj_property name="ObjectShortName">vsync_l</obj_property>
    </wvobject>
 </wave_config>

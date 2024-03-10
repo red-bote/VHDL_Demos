@@ -62,7 +62,7 @@ architecture Behavioral of cpu is
 begin
 
     reset_l <= not reset;
-    cpu_nmi_l <= vsync_l; -- std_logic;
+    cpu_nmi_l <= vsync_l;
 
     ram_cs <= cpu_addr(15);
     mem_rd <= not(cpu_rd_l or cpu_mreq_l);
@@ -92,10 +92,10 @@ begin
         do => ram_data_out -- out std_logic_vector(15 downto 0)
         );
 
-    -- hex2rom -b  a.bin  prog_rom 6l8s > t80_sim.srcs/sources_1/new/prog_rom.vhd
+    -- hex2rom -b  a.bin  prog_rom 9l8s > t80_nmi.srcs/sources_1/new/prog_rom.vhd
     u_prog_rom : entity work.prog_rom
 	port map (
-        Clk => clk_cpu,
+        Clk => clk_sys,
         A => cpu_addr(8 downto 0),
         D => rom_data_out
     );
