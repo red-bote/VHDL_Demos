@@ -1,4 +1,4 @@
-<img align="right" width="245" height="190" src="docs/images/redbote.png">
+<img align="right" width="221" height="126" src="docs/images/redbote.png">
 
 # Introduction
 
