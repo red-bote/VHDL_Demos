@@ -46,17 +46,17 @@ Additional recommended packages for new Linux system install:
 
 Be sure your user account is added to dialout group in order to have permissions for the serial port device:
 
-`sudo usermod myuser -G dialout  -a`
+`sudo usermod myuser -G dialout -a`
 
 My preferred terminal communication program is _picocom_:
 
 `picocom -b 9600 /dev/ttyUSB1`
 
 
-Install Vivado Board Files for Digilent FPGA Boards from [their GitHub repo](https://github.com/Digilent/vivado-boards.git)
+Install Vivado Board Files for Digilent FPGA Boards from the [Digilent GitHub repo](https://github.com/Digilent/vivado-boards.git)
 ```
     git clone https://github.com/Digilent/vivado-boards.git
     cp -r ~/vivado-boards/new/board_files/basys3/  /Tools/Vivado/2020.2/data/boards/board_files/
 ```
 
-Please see the [wiki pages](https://github.com/red-bote/VHDL_Demos/wiki) for additional documentation.
+Please see my [wiki pages](https://github.com/red-bote/VHDL_Demos/wiki) for additional documentation.
