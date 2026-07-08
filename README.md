@@ -1,6 +1,6 @@
-<img align="right" width="221" height="126" src="docs/images/redbote.png">
-
 # Introduction
+
+<img align="right" width="221" height="126" src="docs/images/redbote.png">
 
 These [VHDL](https://en.wikipedia.org/wiki/VHDL) projects target the [Digilent Basys 3 Artix-7 Fpga Trainer Board](https://digilent.com/shop/basys-3-artix-7-fpga-trainer-board-recommended-for-introductory-users/). 
 
