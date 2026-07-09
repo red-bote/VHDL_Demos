@@ -120,14 +120,14 @@ begin
 
     rgb <= (others => '1') when pixel_bit = '1' else (others => '0') ;
 
---    -- check scan coordinate to be within valid extents of bitmap
---    rgb_out <= rgb when 
---        unsigned(row_vector) < BM_HEIGHT AND
---        --unsigned(row_vector) >= '0' AND
---        unsigned(col_vector) < BM_WIDTH
---        --unsigned(col_vector) >= '0'
---        else (others => '0');
+    -- check scan coordinate to be within valid extents of bitmap
+    rgb_out <= rgb when 
+        unsigned(row_vector) < BM_HEIGHT AND
+        --unsigned(row_vector) >= '0' AND
+        unsigned(col_vector) < BM_WIDTH
+        --unsigned(col_vector) >= '0'
+        else (others => '0');
 
-    rgb_out <= rgb;
+--    rgb_out <= rgb;
 
 end Behavioral;
