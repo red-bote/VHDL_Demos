@@ -16,7 +16,7 @@ The Basys 3 is a demo board for the Xilinx [Artix-7 FPGA](https://www.amd.com/en
 * *Note!* Vivado 2020.2 support stops at Ubuntu 20.04
 * Prerequisites on Ubuntu 20.x: `apt install build-essential libtinfo5 picocom`
 
-<img width="444" height="338" src="docs/images/ic5kHM.png">
+<img src="docs/images/ic5kHM.png">
 
 Vivado ML Edition - 2020.2 Installation
 
