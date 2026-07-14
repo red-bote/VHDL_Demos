@@ -8,7 +8,7 @@ The Basys 3 is a demo board for the Xilinx [Artix-7 FPGA](https://www.amd.com/en
 
 [Vivado](https://en.wikipedia.org/wiki/Vivado) was introduced in 2012 and superceded the Xilinx ISE software which had targeted previous generations of Xilinx FPGA and PLD devices such as the Spartan series. [Xilinx](https://en.wikipedia.org/wiki/Xilinx) invented the first commercially viable field-programmable gate array (FPGA) in 1984. Xilinx was acquired by AMD in 2022. 
 
-# Prerequisites
+## Prerequisites
 
 * [Vivado 2020.2](https://www.amd.com/en/support/downloads/adaptive-socs-and-fpgas/development-tools/2020-2.html) release is used (for forgotten reasons). 
 * Download the unified Windows/Linux installer (45Gb) for Vivado ML Edition - 2020.2  Full Product Installation: _Xilinx_Unified_2020.2_1118_1232.tar.gz_ - requires AMD account registration
@@ -20,7 +20,7 @@ The Basys 3 is a demo board for the Xilinx [Artix-7 FPGA](https://www.amd.com/en
 
 Vivado ML Edition - 2020.2 Installation
 
-# System setup and tool installation
+## System setup and tool installation
 
 * The Unified Installer will go directly to _Select Product_. The web install client requires login to AMD account. 
 * Web Install client options to _Download Image Install Separately_ or _Download and Install Now_ 
@@ -31,7 +31,7 @@ Vivado ML Edition - 2020.2 Installation
     sudo ./install_drivers
 ```
 
-# Test cable driver and serial port setup 
+## Test cable driver and serial port setup 
 
 Additional recommended packages for new Linux system install:
 
